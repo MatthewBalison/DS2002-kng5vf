@@ -1,0 +1,80 @@
+    1  pwd
+    2  ls
+    3  ls -al
+    4  cd .
+    5  pwd
+    6  cd ..
+    7  pwd
+    8  cd ..
+    9  pwd
+   10  ls -al
+   11  cd ~
+   12  pwd
+   13  ls -al
+   14  cd /workspaces/DS2002-kng5vf/
+   15  ls -al
+   16  touch file1.txt
+   17  ls -al
+   18  touch file2.txt
+   19  touch file3.txt
+   20  ls -al
+   21  echo "a man a plan a canal panama"
+   22  echo "a man a plan a canal panama" > file1.txt
+   23  ls -al
+   24  cat file1.txt
+   25  cat file1.txt > file2.txt
+   26  cat file1.txt > file3.txt
+   27  ls -al
+   28  echo "this should be a second line" >> file2.txt
+   29  cat file2.txt 
+   30  clear
+   31  ls -al
+   32  cat /dev/null > file3.txt
+   33  ls -al
+   34  mkdir files
+   35  clear
+   36  ls -al
+   37  mv file1.txt files/
+   38  ls -al
+   39  ls -al files/
+   40  clear
+   41  ls -al
+   42  touch file4.txt
+   43  touch file5.txt
+   44  cp file2.txt file6.txt
+   45  cp file3.txt file7.txt
+   46  ls -al
+   47  touch script.sh
+   48  touch myscript.py
+   49  clear
+   50  ls -al
+   51  mv file*.txt files/
+   52  llls -al
+   53  ls -al
+   54  clear
+   55  rm files/file7.txt 
+   56  clear
+   57  ls -al
+   58  cd files
+   59  ls -al
+   60  clear
+   61  cd ..
+   62  ls -al
+   63  top
+   64  ps
+   65  clear
+   66  ps aux
+   67  clear
+   68  cd files/
+   69  ps aux > file6.txt 
+   70  ls -al
+   71  clear
+   72  ls -al
+   73  head file6.txt 
+   74  clear
+   75  head -n 3 file6.txt 
+   76  tail -n 2 file6.txt 
+   77  clear
+   78  history
+   79  ps aux
+   80  history > file5.txt 
