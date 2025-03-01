@@ -1,0 +1,37 @@
+import boto3
+import urllib.request
+
+# Simple function for downloading the file using urllib
+# I got the urllib syntax here: https://docs.python.org/3/library/urllib.request.html#module-urllib.request
+def download(url, filename):
+        urllib.request.urlretrieve(url, filename)
+
+# This upload uses similar syntax to the client syntax you gave us
+def upload(filename, bucket_name, object_name):
+        s3 = boto3.client('s3')
+        s3.upload_file(filename, bucket_name, object_name)
+
+# All I added to what you gave us here is establishing the client and then returning the response.
+def presigned_url(bucket_name, object_name, expires_in):
+        s3 = boto3.client('s3')
+        response = s3.generate_presigned_url(
+                'get_object',
+                Params={'Bucket': bucket_name, 'Key': object_name},
+                ExpiresIn=expires_in
+        )
+        return response
+
+if __name__ == "__main__": # I wasn't familiar with why this syntax was used, but I looked it up and it's neat!
+        # Getting the user inputs for the url, bucket, and expiration, and then running the functions.
+        url = input("What is the URL of the file? : ")
+        bucket_name = input("What is the name of the bucket? : ")
+        expires_in = int(input("What is the expiration time? : "))
+
+        # These last few lines are running the functions, inserting the parameters in (now that they have input)
+        filename = url.split("/")[-1] # This removes the path of the file and keeps the last part, the name.
+        download(url, filename)
+        upload(filename, bucket_name, filename)
+        actual_presigned_url = presigned_url(bucket_name, filename, expires_in)
+
+        # Printing the presigned url output
+        print("Here is your presigned URL: " + actual_presigned_url)
