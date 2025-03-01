@@ -1,0 +1,15 @@
+#!/usr/bin/bash
+
+FILE=$1
+BUCKET=$2
+EXPIRE=${3:-604800}
+
+# First the extraction and upload.
+
+NAME=$(basename "$FILE") # basename came from a quick Google search regarding extracting files.
+
+aws s3 cp "$FILE" "s3://$BUCKET/$FILE" # Same syntax you gave us, but with the positional variables.
+
+# Now the presign.
+
+PRESIGN=$(aws s3 presign "s3://$BUCKET/$FILE" --expires-in $EXPIRE) # Again, same syntax given to us with variables.
